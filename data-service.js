@@ -1,7 +1,3 @@
-//const fs = require("fs");
-
-//let employees = [];
-//let departments = [];
 
 const Sequelize = require('sequelize');
 
@@ -76,7 +72,7 @@ module.exports.getAllEmployees = function(){
 
 module.exports.addEmployee = function (employeeData) {
     return new Promise(function (resolve, reject) {
-        employeeData.isManager = (employeeData.isManager) ? true : false; //there was no advised place to put this? Keep an eye here!
+        employeeData.isManager = (employeeData.isManager) ? true : false; 
         for (employee in employeeData ) {
             if (employeeData.employeeManagerNum=="") {
                 employeeData.employeeManagerNum=null;
@@ -126,7 +122,7 @@ module.exports.getEmployeesByDepartment = function (department) {
     return new Promise(function (resolve, reject) {
         Employee.findAll({
             where: {
-                departmentId: department
+                Department: department
             },
             raw: true
         }).then(function (data) {
@@ -207,7 +203,6 @@ module.exports.getDepartmentById = function (departmentId) {
             },
             raw: true
         }).then(function (data) {
-            //console.log(data[0])
             resolve(data[0]);
         }).catch(() => {
             reject("no results returned"); return;
@@ -230,7 +225,7 @@ module.exports.deleteDepartmentById = function(id){
 
 module.exports.updateEmployee = function(employeeData) {
     return new Promise(function (resolve, reject) {
-        employeeData.isManager = (employeeData.isManager) ? true : false; //there was no advised place to put this? Keep an eye here!
+        employeeData.isManager = (employeeData.isManager) ? true : false; 
         for (employee in employeeData ) {
             if (employeeData.employeeManagerNum=="") {
                 employeeData.employeeManagerNum=null;

@@ -1,23 +1,13 @@
 /*********************************************************************************
-* WEB322 – Assignment 03
+* WEB322 – Assignment 04
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part
 * of this assignment has been copied manually or electronically from any other source
 * (including 3rd party web sites) or distributed to other students.
 *
-* Name: Vanessa Reda Student ID: 112227202 Date: July 9 2021
+* Name: Vanessa Reda Student ID: 112227202 Date: July 28 2021
 *
-* Online (Heroku) Link: https://vreda.herokuapp.com/employees
+* Online (Heroku) Link: https://vreda.herokuapp.com/
 ********************************************************************************/ 
-
-//1. data-service.js check if the functions are written correctly
-//2. data-service.js addEmployee() where should the lines go?
-//3. Correct routes in sever.js?
-//4. 
-
-//Updating the departments route
-//delete managers route
-//in some of the below app.get, what should the parameter passed be?
-//should all references to data set be data now in ex department.hbs?
 
 const express = require("express");
 const exphbs  = require('express-handlebars');
@@ -158,13 +148,6 @@ app.get("/employees", (req, res) => {
     }
 });
 
-/*app.get("/employee/:empNum", (req, res) => {
-    data.getEmployeeByNum(req.params.employeeNum).then((data) => {
-        res.render("employee", { employee: data });
-    }).catch((err) => {
-        res.render("employee",{message:"no results"});
-    });
-});*/
 app.get("/employee/:empNum", (req, res) => {
 
     // initialize an empty object to store the values
@@ -206,7 +189,6 @@ app.get("/department/:departmentId", (req, res) => {
         if (data == undefined) {
             res.status(404).send("Department Not Found");
         } else {
-            //console.log(data);
             res.render("department", { department: data });
         }
     }).catch((err) => {
@@ -214,11 +196,6 @@ app.get("/department/:departmentId", (req, res) => {
     });
 });
 
-//app.get("/managers", (req,res) => {
-    //data.getManagers().then((data)=>{
-        //res.json(data);
-    //});
-//});
 
 app.get("/departments", (req,res) => {
     data.getDepartments().then((data)=>{
